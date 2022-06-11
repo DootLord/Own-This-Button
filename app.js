@@ -5,7 +5,7 @@ const app = express();
 const http = require("http");
 const server = http.Server(app);
 const io = socketIO(server)
-
+const port = process.env.PORT || 3000;
 // App setup
 app.set("port", 1337);
 app.use(express.static(__dirname + "/static"));
@@ -43,8 +43,8 @@ io.on("connection", (socket) => {
 // Increment ownership time
 
 
-server.listen(80, () => {
-    console.log("Server running on 80")
+server.listen(port, () => {
+    console.log("Server running on " + port);
     setInterval(incrementButtonTime, 1000)
 })
 
